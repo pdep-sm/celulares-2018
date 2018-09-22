@@ -1,0 +1,27 @@
+import celulares.*
+
+describe "Tests de celulares" {
+
+	test "IPhone gasta 0.1% de la duración del llamado" {
+		iPhone.llamar(5)
+		assert.equals(4.995, iPhone.bateria())
+	}
+	
+	test "Motorola gasta 0.25 en un llamado" {
+		motorola.llamar(5)
+		assert.equals(4.75, motorola.bateria())
+	}
+
+	test "Motorola con 0.25 de batería recibe llamado y se apaga" {
+		motorola.bateria(0.25)
+		motorola.recibirLlamado(5)
+		assert.that(motorola.estaApagado())
+	}
+
+	test "Motorola con 0.5 de batería recibe llamado y no se apaga" {
+		motorola.bateria(0.5)
+		motorola.recibirLlamado(5)
+		assert.notThat(motorola.estaApagado())
+	}
+
+}
