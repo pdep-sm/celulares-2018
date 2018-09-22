@@ -24,4 +24,15 @@ describe "Tests de celulares" {
 		assert.notThat(motorola.estaApagado())
 	}
 
+	test "Cuando Juliana llama, su Motorola gasta batería" {
+		const bateriaInicial = motorola.bateria()
+		juliana.llamarA(catalina, 5)
+		assert.that(motorola.bateria() < bateriaInicial)
+	}
+
+	test "Cuando Catalina recibe un llamado, su IPhone gasta batería" {
+		const bateriaInicial = iPhone.bateria()
+		juliana.llamarA(catalina, 5)
+		assert.that(iPhone.bateria() < bateriaInicial)
+	}
 }
